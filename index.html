@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CrohnCare</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -373,15 +375,14 @@
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
 
-    const newsletterForm = document.getElementById("form-newsletter");
-    const contactForm = document.getElementById("form-contact");
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyT8WZI5IBN.../exec"; // Doar unul, cel bun
 
     newsletterForm?.addEventListener("submit", function(e) {
       e.preventDefault();
       const data = new FormData(newsletterForm);
       data.append("type", "newsletter");
 
-      fetch("https://script.google.com/macros/s/AKfycbyT8WZI5IBNwdxy1WwwdalYi7uyUjpXO0xJ4hrL-mQMSjde_cvq60J-aBu5Stqj7FVT/exec", {
+      fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         body: data
       })
@@ -390,9 +391,9 @@
         document.getElementById("msg-newsletter").textContent = "✅ Te-ai abonat cu succes!";
         newsletterForm.reset();
       })
-      .catch(() => {
-        document.getElementById("msg-newsletter").textContent = "❌ Eroare la trimitere.";
-      });
+      // .catch(() => {
+      //   document.getElementById("msg-newsletter").textContent = "❌ Eroare la trimitere.";
+      // });
     });
 
     contactForm?.addEventListener("submit", function(e) {
@@ -400,7 +401,7 @@
       const data = new FormData(contactForm);
       data.append("type", "contact");
 
-      fetch("https://script.google.com/macros/s/AKfycby_L_RFaUuZ1BVFhZPknS8wrPEW-H2XiStvgIzlm18qn7lf7kM9iz5cZ1DRCKAf7xo/exec", {
+      fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         body: data
       })
@@ -409,10 +410,11 @@
         document.getElementById("msg-contact").textContent = "✅ Mesaj trimis cu succes!";
         contactForm.reset();
       })
-      .catch(() => {
-        document.getElementById("msg-contact").textContent = "❌ Eroare la trimitere.";
-      });
+      // .catch(() => {
+      //   document.getElementById("msg-contact").textContent = "❌ Eroare la trimitere.";
+      // });
     });
+
 
     document.querySelector('form').addEventListener('submit', function(e) {
       e.preventDefault();
