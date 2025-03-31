@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CrohnCare</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #fff8f5;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 10px;
+      z-index: 999;
+      background: transparent;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px #edafb8;
+    }
+
+    nav a {
+      color: #4a5759;
+      font-size: 0.7rem;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      background: #edafb8;
+      border-radius: 6px;
+    }
+
+    header {
+      position: relative;
+      height: 65vh;
+      background: linear-gradient(135deg, #f5d5db, #c5e0dc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      background: rgba(255,255,255,0.8);
+      padding: 20px 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .hero-content p {
+      font-size: 0.8rem;
+    }
+
+    .floating-area {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .float {
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .flower1 { top: 10%; left: -10%; width: 120px; }
+    .flower2 { top: 70%; left: 40%; width: 80px; }
+    .dna     { top: -10%; left: 70%; width: 160px; }
+    .medkit  { top: 55%; left: -5%; width: 180px; }
+    .stars1  { top: 25%; left: 25%; width: 60px; }
+    .stars2  { top: 30%; left: 75%; width: 60px; }
+    .heart   { top: 3%; left: 45%; width: 80px; }
+    .bottle  { top: 60%; left: 65%; width: 140px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    section {
+      background: white;
+      border-radius: 16px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      margin: 20px 15px;
+    }
+
+    section h2 {
+      color: #b76672;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .section-images {
+      display: flex;
+      overflow-x: auto;
+      gap: 16px;
+      margin-top: 20px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .section-images img {
+      flex-shrink: 0;
+      width: 260px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      scroll-snap-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    form input,
+    form textarea {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      font-family: 'Poppins', sans-serif;
+      transition: border 0.2s ease;
+      width: 100%;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #b0c4b1;
+      box-shadow: 0 0 0 2px rgba(78, 91, 166, 0.2);
+    }
+
+    form button {
+      background-color: #b0c4b1;
+      color: white;
+      font-weight: 600;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    form button:hover {
+      background-color: #677c68;
+    }
+
+    .footer {
+      background: #fff;
+      border-top: 1px solid #eee;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #4a5759;
+      font-size: 0.9rem;
+      text-decoration: none;
+      margin: 6px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 480px) {
+      nav a {
+        font-size: 0.6rem;
+      }
+
+      header {
+        height: 55vh;
+      }
+
+      .hero-content h2 {
+        font-size: 1.2rem;
+      }
+
+      .section-images img {
+        width: 220px;
+      }
+
+      .footer a {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="#problema">De ce contează</a>
+    <a href="#solutie">Cum ajutăm</a>
+    <a href="#viitor">Ce urmează</a>
+    <a href="#despre">Echipa</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <div class="floating-area">
+      <img src="images/2.png" class="float medkit">
+      <img src="images/3.png" class="float bottle">
+      <img src="images/4.png" class="float stars1">
+      <img src="images/4.png" class="float stars2">
+      <img src="images/5.png" class="float heart">
+      <img src="images/6.png" class="float dna">
+      <img src="images/8.png" class="float flower1">
+      <img src="images/8.png" class="float flower2">
+    </div>
+    <div class="hero-content">
+      <h2>CrohnCare</h2>
+      <p>Partenerul tău zilnic în gestionarea bolii Crohn.</p>
+    </div>
+  </header>
+
+  <section id="problema">
+    <h2>Provocările în viața cu Crohn</h2>
+    <ul>
+      <li>📉 Lipsa unui mod organizat pentru urmărirea simptomelor</li>
+      <li>🧮 Imposibilitatea calculării scorului CDAI</li>
+      <li>🗂️ Fără acces centralizat la date</li>
+      <li>📞 Comunicarea deficitară cu medicul</li>
+      <li>🚻 Nevoie de localizare rapidă a WC-urilor</li>
+      <li>👩‍⚕️ Medicul nu are date actualizate</li>
+      <li>⏱️ Consultul se concentrează pe colectare, nu pe decizii</li>
+      <li>🔒 Lipsa unei platforme digitale dedicate</li>
+    </ul>
+  </section>
+
+  <section id="solutie">
+    <h2>Cum ajută CrohnCare</h2>
+    <ul>
+      <li>📝 Jurnal zilnic & calcul automat CDAI</li>
+      <li>📊 Evoluție vizualizată grafic</li>
+      <li>🤝 Asociere pacient–medic</li>
+      <li>💊 Gestionare tratamente</li>
+      <li>🔐 Acces securizat pentru fiecare rol</li>
+      <li>🗺️ Hartă cu WC-uri publice</li>
+    </ul>
+    <div class="section-images">
+      <img src="images/Journal screen.png" alt="Ecran jurnal">
+      <img src="images/Evolution Screen.png" alt="Ecran evoluție">
+    </div>
+  </section>
+
+  <section id="viitor">
+    <h2>Ce urmează</h2>
+    <ul>
+      <li>🔔 Notificări inteligente</li>
+      <li>🍽️ Jurnal alimentar integrat</li>
+      <li>📱 Lansare aplicație mobilă</li>
+      <li>🌍 Comunitate online de suport</li>
+    </ul>
+  </section>
+
+  <section id="despre">
+    <h2>👨‍⚕️ Echipa CrohnCare</h2>
+    <p>
+      Suntem o echipă interdisciplinară ce îmbină tehnologia, medicina și designul empatic pentru a oferi o soluție reală,
+      accesibilă și centrată pe pacient.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>📬 Contactează-ne</h2>
+    <form id="form-contact">
+      <input type="text" name="name" placeholder="Nume" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <textarea name="message" placeholder="Mesajul tău" rows="4" required></textarea>
+      <button type="submit">Trimite mesajul</button>
+    </form>
+    <p id="msg-contact"></p>
+  </section>
+  
+  <section id="newsletter">
+    <h2>📰 Join Our Newsletter</h2>
+    <form id="subscribe-form">
+      <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">
+        Fii primul care află când lansăm aplicația sau adăugăm funcționalități noi utile pentru pacienți.
+      </p>
+      <input type="email" name="email" placeholder="Emailul tău" required />
+      <button type="submit">Abonează-te</button>
+    </form>
+    <p id="form-msg"></p>
+  </section>
+    
+  
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="mailto:contact@crohncare.com"><i class="bi bi-envelope"></i> contact@crohncare.com</a>
+      <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
+      <a href="#"><i class="bi bi-facebook"></i> Facebook</a>
+    </div>
+    <div class="footer-note">
+      © 2025 CrohnCare — Made with 💙 for those who fight daily
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add('show');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    const newsletterForm = document.getElementById("form-newsletter");
+    const contactForm = document.getElementById("form-contact");
+
+    newsletterForm?.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = new FormData(newsletterForm);
+      data.append("type", "newsletter");
+
+      fetch("https://script.google.com/macros/s/AKfycbyT8WZI5IBNwdxy1WwwdalYi7uyUjpXO0xJ4hrL-mQMSjde_cvq60J-aBu5Stqj7FVT/exec", {
+        method: "POST",
+        body: data
+      })
+      .then(res => res.text())
+      .then(() => {
+        document.getElementById("msg-newsletter").textContent = "✅ Te-ai abonat cu succes!";
+        newsletterForm.reset();
+      })
+      .catch(() => {
+        document.getElementById("msg-newsletter").textContent = "❌ Eroare la trimitere.";
+      });
+    });
+
+    contactForm?.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      data.append("type", "contact");
+
+      fetch("https://script.google.com/macros/s/AKfycby_L_RFaUuZ1BVFhZPknS8wrPEW-H2XiStvgIzlm18qn7lf7kM9iz5cZ1DRCKAf7xo/exec", {
+        method: "POST",
+        body: data
+      })
+      .then(res => res.text())
+      .then(() => {
+        document.getElementById("msg-contact").textContent = "✅ Mesaj trimis cu succes!";
+        contactForm.reset();
+      })
+      .catch(() => {
+        document.getElementById("msg-contact").textContent = "❌ Eroare la trimitere.";
+      });
+    });
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Te-ai abonat cu succes! Vei primi un email când lansăm aplicația.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
