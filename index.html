@@ -3,12 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CrohnCare</title>
+  <title>CrohnCare - Partenerul tău în gestionarea bolii Crohn</title>
+  <meta name="description" content="CrohnCare - Aplicația care te ajută să gestionezi boala Crohn prin monitorizarea simptomelor, calculul CDAI și comunicare facilă cu medicul.">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary: #b76672;
+      --secondary: #b0c4b1;
+      --accent: #edafb8;
+      --light: #f5d5db;
+      --lighter: #c5e0dc;
+      --dark: #4a5759;
+      --bg: #fff8f5;
+      --white: #ffffff;
+    }
 
     * {
       margin: 0;
@@ -19,68 +31,177 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      color: #333;
-      background-color: #fff8f5;
+      color: var(--dark);
+      background-color: var(--bg);
+      line-height: 1.6;
     }
 
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       display: flex;
-      justify-content: space-around;
-      padding: 10px 10px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
       z-index: 999;
-      background: transparent;
-      transition: background 0.3s, box-shadow 0.3s;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(237, 175, 184, 0.2);
     }
 
     nav.scrolled {
-      background-color: #ffffff;
-      box-shadow: 0 2px 6px #edafb8;
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(237, 175, 184, 0.4);
+      padding: 10px 5%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo span {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
     }
 
     nav a {
-      color: #4a5759;
-      font-size: 0.7rem;
+      color: var(--dark);
+      font-size: 0.9rem;
       text-decoration: none;
-      font-weight: 600;
-      padding: 6px;
-      transition: 0.2s;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
-      background: #edafb8;
-      border-radius: 6px;
+      background: var(--accent);
+      color: var(--white);
     }
 
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    /* Hero Section */
     header {
       position: relative;
-      height: 65vh;
-      background: linear-gradient(135deg, #f5d5db, #c5e0dc);
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--light), var(--lighter));
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-content {
-      background: rgba(255,255,255,0.8);
-      padding: 20px 25px;
-      border-radius: 16px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      z-index: 2;
+      flex: 1;
+      text-align: left;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 600px;
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: relative;
     }
 
-    .hero-content h2 {
-      font-size: 1.5rem;
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary);
+      line-height: 1.2;
     }
 
     .hero-content p {
-      font-size: 0.8rem;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--dark);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(183, 102, 114, 0.3);
+    }
+
+    .btn:hover {
+      background-color: #a05561;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(183, 102, 114, 0.4);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+      box-shadow: 0 4px 10px rgba(176, 196, 177, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background-color: #95a996;
+      box-shadow: 0 6px 15px rgba(176, 196, 177, 0.4);
     }
 
     .floating-area {
@@ -98,263 +219,1165 @@
       pointer-events: none;
     }
 
-    .flower1 { top: 10%; left: -10%; width: 120px; }
+    .flower1 { top: 10%; left: 5%; width: 120px; }
     .flower2 { top: 70%; left: 40%; width: 80px; }
-    .dna     { top: -10%; left: 70%; width: 160px; }
-    .medkit  { top: 55%; left: -5%; width: 180px; }
-    .stars1  { top: 25%; left: 25%; width: 60px; }
-    .stars2  { top: 30%; left: 75%; width: 60px; }
-    .heart   { top: 3%; left: 45%; width: 80px; }
-    .bottle  { top: 60%; left: 65%; width: 140px; }
+    .dna { top: 5%; left: 70%; width: 160px; }
+    .medkit { top: 55%; left: 5%; width: 180px; }
+    .stars1 { top: 25%; left: 25%; width: 60px; }
+    .stars2 { top: 30%; left: 75%; width: 60px; }
+    .heart { top: 15%; left: 45%; width: 80px; }
+    .bottle { top: 60%; left: 65%; width: 140px; }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
     }
 
+    /* Features Section */
     section {
-      background: white;
-      border-radius: 16px;
-      padding: 40px 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      margin: 20px 15px;
+      padding: 100px 0;
     }
 
-    section h2 {
-      color: #b76672;
-      font-size: 1.3rem;
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: var(--dark);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
       margin-bottom: 20px;
     }
 
-    ul {
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    /* Problem Section */
+    #problema {
+      background-color: var(--white);
+    }
+
+    .problem-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .problem-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .problem-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .problem-image img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .problem-list {
       list-style: none;
       padding: 0;
     }
 
-    ul li {
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-    }
-
-    .section-images {
+    .problem-list li {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
       display: flex;
-      overflow-x: auto;
-      gap: 16px;
-      margin-top: 20px;
-      scroll-snap-type: x mandatory;
+      align-items: flex-start;
+      gap: 15px;
     }
 
-    .section-images img {
+    .problem-list li i {
+      color: var(--primary);
+      font-size: 1.3rem;
       flex-shrink: 0;
-      width: 260px;
-      border-radius: 16px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      scroll-snap-align: center;
     }
 
-    form {
+    /* Solution Section */
+    #solutie {
+      background-color: var(--bg);
+    }
+
+    .solution-container {
       display: flex;
       flex-direction: column;
+      gap: 50px;
+    }
+
+    .solution-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .solution-feature {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .solution-feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .solution-feature i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .solution-feature h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .solution-feature p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .app-screenshots {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .app-screenshots::-webkit-scrollbar {
+      display: none;
+    }
+
+    .screenshot {
+      flex: 0 0 auto;
+      width: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      scroll-snap-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .screenshot:hover {
+      transform: scale(1.05);
+    }
+
+    .screenshot img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Future Section */
+    #viitor {
+      background: linear-gradient(135deg, var(--lighter), var(--light));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .future-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .future-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .future-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .future-card i {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .future-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+
+    .future-card p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    /* Team Section */
+    #despre {
+      background-color: var(--white);
+    }
+
+    .team-container {
+      text-align: center;
+    }
+
+    .team-description {
+      max-width: 800px;
+      margin: 0 auto 50px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .team-member {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-member img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .team-member-info {
+      padding: 20px;
+    }
+
+    .team-member-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+
+    .team-member-info p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .team-member-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .team-member-social a {
+      color: var(--dark);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .team-member-social a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Contact Section */
+    #contact {
+      background-color: var(--bg);
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      justify-content: space-between;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: var(--dark);
+    }
+
+    .contact-details {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact-details li {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-details li i {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(176, 196, 177, 0.2);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-message {
+      margin-top: 15px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .form-message.success {
+      color: #2ecc71;
+    }
+
+    .form-message.error {
+      color: #e74c3c;
+    }
+
+    /* Newsletter Section */
+    #newsletter {
+      background: linear-gradient(135deg, var(--primary), #a05561);
+      color: var(--white);
+      padding: 80px 0;
+    }
+
+    .newsletter-container {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .newsletter-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .newsletter-container p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+    }
+
+    .newsletter-form input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+    }
+
+    .newsletter-form button {
+      background-color: var(--white);
+      color: var(--primary);
+      font-weight: 600;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-col h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .footer-links a i {
+      font-size: 1.1rem;
+    }
+
+    .footer-social {
+      display: flex;
       gap: 15px;
       margin-top: 20px;
     }
 
-    form input,
-    form textarea {
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 0.9rem;
-      font-family: 'Poppins', sans-serif;
-      transition: border 0.2s ease;
-      width: 100%;
-    }
-
-    form input:focus,
-    form textarea:focus {
-      outline: none;
-      border-color: #b0c4b1;
-      box-shadow: 0 0 0 2px rgba(78, 91, 166, 0.2);
-    }
-
-    form button {
-      background-color: #b0c4b1;
-      color: white;
-      font-weight: 600;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: background 0.2s;
-    }
-
-    form button:hover {
-      background-color: #677c68;
-    }
-
-    .footer {
-      background: #fff;
-      border-top: 1px solid #eee;
-      padding: 30px 20px;
-      text-align: center;
-    }
-
-    .footer a {
-      color: #4a5759;
-      font-size: 0.9rem;
-      text-decoration: none;
-      margin: 6px auto;
+    .footer-social a {
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #f5f5f5;
+      border-radius: 50%;
+      color: var(--dark);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
     }
 
-    .footer a:hover {
-      text-decoration: underline;
+    .footer-social a:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      transform: translateY(-5px);
     }
 
-    .footer-note {
-      margin-top: 20px;
-      font-size: 0.75rem;
-      color: #aaa;
+    .footer-bottom {
+      margin-top: 50px;
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
     }
 
-    @media (max-width: 480px) {
-      nav a {
-        font-size: 0.6rem;
+    .footer-bottom p {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
       }
 
-      header {
-        height: 55vh;
+      .hero-content {
+        text-align: center;
+        margin-bottom: 40px;
       }
 
-      .hero-content h2 {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .contact-form {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .feature-card h3 {
         font-size: 1.2rem;
       }
 
-      .section-images img {
-        width: 220px;
-      }
-
-      .footer a {
-        font-size: 0.85rem;
+      .screenshot {
+        width: 250px;
       }
     }
-  </style>
+
+  /* Help Us Section */
+  #help-us {
+    background-color: var(--white);
+    padding: 100px 0;
+  }
+
+  .help-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .help-us-content {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .help-us-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+  }
+
+  .help-us-image img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .help-us-content h3 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
+
+  .help-us-content p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .help-us-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+
+  .help-us-list li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .help-us-list li i {
+    color: var(--primary);
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 992px) {
+    .help-us-container {
+      flex-direction: column;
+    }
+    
+    .help-us-content {
+      order: 1;
+    }
+    
+    .help-us-image {
+      order: 0;
+    }
+  }
+</style>
 </head>
 <body>
-
+  <!-- Navigation -->
   <nav id="navbar">
-    <a href="#problema">De ce contează</a>
-    <a href="#solutie">Cum ajutăm</a>
-    <a href="#viitor">Ce urmează</a>
-    <a href="#despre">Echipa</a>
-    <a href="#contact">Contact</a>
+    <a href="#" class="logo">
+      <!-- <img src="/placeholder.svg?height=40&width=40" alt="CrohnCare Logo" /> -->
+      <img src="images/mat.png" alt="CrohnCare Logo" height="40" />
+
+      <span>CrohnCare</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#problema">De ce contează</a>
+      <a href="#solutie">Cum ajutăm</a>
+      <a href="#viitor">Ce urmează</a>
+      <a href="#despre">Echipa</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="bi bi-list"></i>
+    </div>
   </nav>
 
+  <!-- Hero Section -->
   <header>
     <div class="floating-area">
-      <img src="images/2.png" class="float medkit">
-      <img src="images/3.png" class="float bottle">
-      <img src="images/4.png" class="float stars1">
-      <img src="images/4.png" class="float stars2">
-      <img src="images/5.png" class="float heart">
-      <img src="images/6.png" class="float dna">
-      <img src="images/8.png" class="float flower1">
-      <img src="images/8.png" class="float flower2">
+      <img src="/images/2.png" class="float medkit" alt="Medical Kit Icon" width="120px">
+      <img src="/images/3.png" class="float bottle" alt="Medicine Bottle Icon" width="140px">
+      <img src="/images/4.png" class="float stars1" alt="Stars Icon" width="60px">
+      <img src="/images/4.png" class="float stars2" alt="Stars Icon" width="60px">
+      <img src="/images/5.png" class="float heart" alt="Heart Icon" width="80px">
+      <img src="/images/6.png" class="float dna" alt="DNA Icon" width="160px">
+      <img src="/images/8.png" class="float flower1" alt="Flower Icon" width="120px">
+      <img src="/images/8.png" class="float flower2" alt="Flower Icon" width="80px">
     </div>
-    <div class="hero-content">
-      <h2>CrohnCare</h2>
-      <p>Partenerul tău zilnic în gestionarea bolii Crohn.</p>
+    <div class="hero-container">
+      <div class="hero-content fade-in">
+        <h1>Gestionează boala Crohn cu încredere</h1>
+        <p>CrohnCare este partenerul tău zilnic în monitorizarea simptomelor, calcularea scorului CDAI și comunicarea eficientă cu medicul tău.</p>
+        <a href="#solutie" class="btn">Descoperă aplicația</a>
+      </div>
+      <div class="hero-image fade-in">
+        <img src="/images/app_prev.png" alt="CrohnCare App Preview" width="365px">
+      </div>
     </div>
   </header>
 
+  <!-- Problem Section -->
   <section id="problema">
-    <h2>Provocările în viața cu Crohn</h2>
-    <ul>
-      <li>📉 Lipsa unui mod organizat pentru urmărirea simptomelor</li>
-      <li>🧮 Imposibilitatea calculării scorului CDAI</li>
-      <li>🗂️ Fără acces centralizat la date</li>
-      <li>📞 Comunicarea deficitară cu medicul</li>
-      <li>🚻 Nevoie de localizare rapidă a WC-urilor</li>
-      <li>👩‍⚕️ Medicul nu are date actualizate</li>
-      <li>⏱️ Consultul se concentrează pe colectare, nu pe decizii</li>
-      <li>🔒 Lipsa unei platforme digitale dedicate</li>
-    </ul>
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Provocările în viața cu Crohn</h2>
+        <p>Pacienții cu boala Crohn se confruntă zilnic cu numeroase dificultăți în gestionarea afecțiunii lor.</p>
+      </div>
+      <div class="problem-container">
+        <div class="problem-content fade-in">
+          <ul class="problem-list">
+            <li>
+              <i class="bi bi-graph-down"></i>
+              <div>
+                <strong>Lipsa unui mod organizat pentru urmărirea simptomelor</strong>
+                <p>Pacienții nu au un sistem eficient pentru a-și monitoriza starea de sănătate zilnică.</p>
+              </div>
+            </li>
+            <li>
+              <i class="bi bi-calculator"></i>
+              <div>
+                <strong>Imposibilitatea calculării scorului CDAI</strong>
+                <p>Scorul CDAI este esențial pentru evaluarea activității bolii, dar este dificil de calculat manual.</p>
+              </div>
+            </li>
+            <li>
+              <i class="bi bi-folder-x"></i>
+              <div>
+                <strong>Fără acces centralizat la date</strong>
+                <p>Informațiile medicale sunt adesea împrăștiate în diverse locuri, făcând dificilă urmărirea istoricului medical.</p>
+              </div>
+            </li>
+            <li>
+              <i class="bi bi-telephone-x"></i>
+              <div>
+                <strong>Comunicarea deficitară cu medicul</strong>
+                <p>Lipsa unui canal direct de comunicare între pacient și medic duce la întârzieri în tratament.</p>
+              </div>
+            </li>
+            <li>
+              <i class="bi bi-geo-alt"></i>
+              <div>
+                <strong>Nevoie de localizare rapidă a WC-urilor</strong>
+                <p>Accesul rapid la toalete publice este o necesitate pentru pacienții cu Crohn.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="problem-image fade-in">
+          <img src="/images/pacient.png" alt="Pacient cu boala Crohn" width="400px">
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- Solution Section -->
   <section id="solutie">
-    <h2>Cum ajută CrohnCare</h2>
-    <ul>
-      <li>📝 Jurnal zilnic & calcul automat CDAI</li>
-      <li>📊 Evoluție vizualizată grafic</li>
-      <li>🤝 Asociere pacient–medic</li>
-      <li>💊 Gestionare tratamente</li>
-      <li>🔐 Acces securizat pentru fiecare rol</li>
-      <li>🗺️ Hartă cu WC-uri publice</li>
-    </ul>
-    <div class="section-images">
-      <img src="images/Journal screen.png" alt="Ecran jurnal">
-      <img src="images/Evolution Screen.png" alt="Ecran evoluție">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Cum ajută CrohnCare</h2>
+        <p>Aplicația noastră oferă soluții complete pentru gestionarea eficientă a bolii Crohn.</p>
+      </div>
+      <div class="solution-container">
+        <div class="solution-features fade-in">
+          <div class="solution-feature">
+            <i class="bi bi-journal-text"></i>
+            <h3>Jurnal zilnic</h3>
+            <p>Înregistrează simptomele, starea de spirit și activitățile zilnice pentru a identifica factori declanșatori.</p>
+          </div>
+          <div class="solution-feature">
+            <i class="bi bi-graph-up"></i>
+            <h3>Calcul automat CDAI</h3>
+            <p>Calculează automat scorul CDAI bazat pe datele introduse în jurnal pentru o evaluare precisă a activității bolii.</p>
+          </div>
+          <div class="solution-feature">
+            <i class="bi bi-people"></i>
+            <h3>Asociere pacient-medic</h3>
+            <p>Conectează pacienții cu medicii lor pentru o comunicare eficientă și monitorizare continuă.</p>
+          </div>
+          <div class="solution-feature">
+            <i class="bi bi-capsule"></i>
+            <h3>Gestionare tratamente</h3>
+            <p>Organizează și primește notificări pentru medicație, programări și analize medicale.</p>
+          </div>
+          <div class="solution-feature">
+            <i class="bi bi-shield-lock"></i>
+            <h3>Acces securizat</h3>
+            <p>Protejează datele medicale sensibile cu sisteme avansate de securitate și control al accesului.</p>
+          </div>
+          <div class="solution-feature">
+            <i class="bi bi-map"></i>
+            <h3>Hartă WC-uri publice</h3>
+            <p>Localizează rapid toaletele publice din apropiere pentru situații de urgență.</p>
+          </div>
+        </div>
+        <div class="app-screenshots fade-in">
+          <div class="screenshot">
+            <img src="/images/Journal_screen.png" alt="Ecran jurnal CrohnCare" height="600px" width="300px">
+          </div>
+          <div class="screenshot">
+            <img src="/images/Evolution_Screen.png" alt="Ecran evoluție CrohnCare" height="600px" width="300px">
+          </div>
+          <div class="screenshot">
+            <img src="/images/Evolution_Screen2.png" alt="Ecran evoluție CrohnCare" height="600px" width="300px">
+          </div>
+          <div class="screenshot">
+            <img src="/images/Wc_Screen.png" alt="Ecran hartă CrohnCare" height="600px"  width="300px">
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Future Section -->
   <section id="viitor">
-    <h2>Ce urmează</h2>
-    <ul>
-      <li>🔔 Notificări inteligente</li>
-      <li>🍽️ Jurnal alimentar integrat</li>
-      <li>📱 Lansare aplicație mobilă</li>
-      <li>🌍 Comunitate online de suport</li>
-    </ul>
-  </section>
-
-  <section id="despre">
-    <h2>👨‍⚕️ Echipa CrohnCare</h2>
-    <p>
-      Suntem o echipă interdisciplinară ce îmbină tehnologia, medicina și designul empatic pentru a oferi o soluție reală,
-      accesibilă și centrată pe pacient.
-    </p>
-  </section>
-
-  <section id="contact">
-    <h2>📬 Contactează-ne</h2>
-    <form id="form-contact">
-      <input type="text" name="name" placeholder="Nume" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <textarea name="message" placeholder="Mesajul tău" rows="4" required></textarea>
-      <button type="submit">Trimite mesajul</button>
-    </form>
-    <p id="msg-contact"></p>
-  </section>
-  
-  <section id="newsletter">
-    <h2>📰 Join Our Newsletter</h2>
-    <form id="subscribe-form">
-      <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">
-        Fii primul care află când lansăm aplicația sau adăugăm funcționalități noi utile pentru pacienți.
-      </p>
-      <input type="email" name="email" placeholder="Emailul tău" required />
-      <button type="submit">Abonează-te</button>
-    </form>
-    <p id="form-msg"></p>
-  </section>
-    
-  
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="mailto:contact@crohncare.com"><i class="bi bi-envelope"></i> contact@crohncare.com</a>
-      <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
-      <a href="#"><i class="bi bi-facebook"></i> Facebook</a>
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Ce urmează</h2>
+        <p>Suntem în continuă dezvoltare pentru a aduce funcționalități noi care să îmbunătățească experiența utilizatorilor noștri.</p>
+      </div>
+      <div class="future-grid fade-in">
+        <div class="future-card">
+          <i class="bi bi-bell"></i>
+          <h3>Notificări inteligente</h3>
+          <p>Sistem avansat de notificări personalizate bazate pe pattern-urile identificate în datele pacientului.</p>
+        </div>
+        <div class="future-card">
+          <i class="bi bi-phone"></i>
+          <h3>Aplicație mobilă</h3>
+          <p>Acces la toate funcționalitățile CrohnCare direct de pe telefonul mobil, disponibil pentru iOS și Android.</p>
+        </div>
+        <div class="future-card">
+          <i class="bi bi-people-fill"></i>
+          <h3>Comunitate online</h3>
+          <p>Platformă de suport unde pacienții pot împărtăși experiențe și sfaturi într-un mediu sigur.</p>
+        </div>
+      </div>
     </div>
-    <div class="footer-note">
-      © 2025 CrohnCare — Made with 💙 for those who fight daily
+  </section>
+
+  <!-- Team Section -->
+  <section id="despre">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Echipa CrohnCare</h2>
+        <p>Suntem o echipă interdisciplinară dedicată îmbunătățirii vieții pacienților cu boala Crohn.</p>
+      </div>
+      <div class="team-container">
+        <div class="team-description fade-in">
+          <p>Echipa noastră îmbină expertiza în tehnologie, medicină și design empatic pentru a oferi o soluție reală, accesibilă și centrată pe pacient. Fiecare membru al echipei aduce perspective valoroase și experiență în domeniul său, contribuind la dezvoltarea unei aplicații care răspunde nevoilor reale ale pacienților cu boala Crohn.</p>
+        </div>
+        <!-- <div class="team-members fade-in">
+          <div class="team-member">
+            <img src="/placeholder.svg?height=250&width=250" alt="Membru echipă">
+            <div class="team-member-info">
+              <h3>Dr. Ana Popescu</h3>
+              <p>Gastroenterolog</p>
+              <div class="team-member-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-member">
+            <img src="/placeholder.svg?height=250&width=250" alt="Membru echipă">
+            <div class="team-member-info">
+              <h3>Mihai Ionescu</h3>
+              <p>Lead Developer</p>
+              <div class="team-member-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-member">
+            <img src="/placeholder.svg?height=250&width=250" alt="Membru echipă">
+            <div class="team-member-info">
+              <h3>Elena Dumitrescu</h3>
+              <p>UX/UI Designer</p>
+              <div class="team-member-social">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-behance"></i></a>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Contactează-ne</h2>
+        <p>Ai întrebări sau sugestii? Suntem aici să te ajutăm.</p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info fade-in">
+          <h3>Hai să vorbim</h3>
+          <p>Suntem deschiși la feedback și întrebări. Nu ezita să ne contactezi prin oricare dintre metodele de mai jos.</p>
+          <ul class="contact-details">
+            <li>
+              <i class="bi bi-envelope"></i>
+              <span>contact@crohncare.com</span>
+            </li>
+            <!-- <li>
+              <i class="bi bi-telephone"></i>
+              <span>+40 712 345 678</span>
+            </li> -->
+            <li>
+              <i class="bi bi-geo-alt"></i>
+              <span>Cluj-Napoca, România</span>
+            </li>
+          </ul>
+        </div>
+        <div class="contact-form fade-in">
+          <form id="form-contact">
+            <div class="form-group">
+              <label for="name">Nume</label>
+              <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Mesaj</label>
+              <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">Trimite mesajul</button>
+          </form>
+          <div id="msg-contact" class="form-message"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Help Us Section -->
+  <section id="help-us">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Ajută-ne să evoluăm</h2>
+        <p>Feedback-ul tău este esențial pentru a ne asigura că CrohnCare răspunde nevoilor reale ale pacienților cu boala Crohn.</p>
+      </div>
+      <div class="help-us-container fade-in">
+        <div class="help-us-content">
+          <h3>Contribuie la dezvoltarea CrohnCare</h3>
+          <p>Suntem în etapa de validare a conceptului și avem nevoie de părerea ta pentru a îmbunătăți aplicația. Prin completarea formularului de validare, ne ajuți să:</p>
+          <ul class="help-us-list">
+            <li><i class="bi bi-check-circle"></i> Identificăm funcționalitățile cele mai valoroase pentru utilizatori</li>
+            <li><i class="bi bi-check-circle"></i> Descoperim noi idei și sugestii de îmbunătățire</li>
+            <li><i class="bi bi-check-circle"></i> Prioritizăm dezvoltarea în funcție de nevoile reale</li>
+            <li><i class="bi bi-check-circle"></i> Creăm o aplicație care să facă o diferență reală în viața pacienților</li>
+          </ul>
+          <a href="https://forms.gle/UhiPYE2ZrD5sDWhE7" class="btn">Completează formularul de validare</a>
+        </div>
+        <div class="help-us-image">
+          <img src="/images/help.png" target="_blank"  alt="Contribuie la CrohnCare" height="400px" width="800px">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section id="newsletter">
+    <div class="container">
+      <div class="newsletter-container fade-in">
+        <h2>Abonează-te la newsletter</h2>
+        <p>Fii primul care află când lansăm aplicația sau adăugăm funcționalități noi utile pentru pacienți.</p>
+        <form id="subscribe-form" class="newsletter-form">
+          <input type="email" name="email" placeholder="Adresa ta de email" required>
+          <button type="submit">Abonează-te</button>
+        </form>
+        <div id="form-msg" class="form-message"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>CrohnCare</h3>
+          <p>Partenerul tău zilnic în gestionarea bolii Crohn, oferind instrumente și resurse pentru o viață mai bună.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61574713237987"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/crohn.care/#"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Link-uri rapide</h3>
+          <ul class="footer-links">
+            <li><a href="#problema"><i class="bi bi-chevron-right"></i> De ce contează</a></li>
+            <li><a href="#solutie"><i class="bi bi-chevron-right"></i> Cum ajutăm</a></li>
+            <li><a href="#viitor"><i class="bi bi-chevron-right"></i> Ce urmează</a></li>
+            <li><a href="#despre"><i class="bi bi-chevron-right"></i> Echipa</a></li>
+            <li><a href="#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Resurse</h3>
+          <ul class="footer-links">
+            <!-- <li><a href="#"><i class="bi bi-file-text"></i> Blog</a></li> -->
+            <!-- <li><a href="#"><i class="bi bi-question-circle"></i> FAQ</a></li> -->
+            <li><a href="privacy_policy.html"><i class="bi bi-shield-check"></i> Politica de confidențialitate</a></li>
+            <li><a href="terms.html"><i class="bi bi-file-earmark-text"></i> Termeni și condiții</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CrohnCare — Made with 💙 for those who fight daily</p>
+      </div>
     </div>
   </footer>
 
   <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
@@ -364,63 +1387,76 @@
       }
     });
 
-    const sections = document.querySelectorAll('section');
+    // Scroll animation
+    const fadeElements = document.querySelectorAll('.fade-in');
     const revealOnScroll = () => {
-      const trigger = window.innerHeight * 0.85;
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < trigger) sec.classList.add('show');
+      const triggerPoint = window.innerHeight * 0.85;
+      
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < triggerPoint) {
+          element.classList.add('show');
+        }
       });
     };
+
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
 
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyT8WZI5IBN.../exec"; // Doar unul, cel bun
-
-    newsletterForm?.addEventListener("submit", function(e) {
+    // Form submission
+    const contactForm = document.getElementById('form-contact');
+    const contactMsg = document.getElementById('msg-contact');
+    
+    contactForm?.addEventListener('submit', function(e) {
       e.preventDefault();
-      const data = new FormData(newsletterForm);
-      data.append("type", "newsletter");
-
-      fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        body: data
-      })
-      .then(res => res.text())
-      .then(() => {
-        document.getElementById("msg-newsletter").textContent = "✅ Te-ai abonat cu succes!";
-        newsletterForm.reset();
-      })
-      // .catch(() => {
-      //   document.getElementById("msg-newsletter").textContent = "❌ Eroare la trimitere.";
-      // });
+      contactMsg.textContent = "✅ Mesaj trimis cu succes!";
+      contactMsg.classList.add('success');
+      contactForm.reset();
+      
+      // Simulate form submission
+      setTimeout(() => {
+        contactMsg.textContent = "";
+      }, 5000);
     });
 
-    contactForm?.addEventListener("submit", function(e) {
+    const subscribeForm = document.getElementById('subscribe-form');
+    const formMsg = document.getElementById('form-msg');
+    
+    subscribeForm?.addEventListener('submit', function(e) {
       e.preventDefault();
-      const data = new FormData(contactForm);
-      data.append("type", "contact");
-
-      fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        body: data
-      })
-      .then(res => res.text())
-      .then(() => {
-        document.getElementById("msg-contact").textContent = "✅ Mesaj trimis cu succes!";
-        contactForm.reset();
-      })
-      // .catch(() => {
-      //   document.getElementById("msg-contact").textContent = "❌ Eroare la trimitere.";
-      // });
+      formMsg.textContent = "✅ Te-ai abonat cu succes! Vei primi un email când lansăm aplicația.";
+      formMsg.classList.add('success');
+      subscribeForm.reset();
+      
+      // Simulate form submission
+      setTimeout(() => {
+        formMsg.textContent = "";
+      }, 5000);
     });
 
-
-    document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Te-ai abonat cu succes! Vei primi un email când lansăm aplicația.');
-      this.reset();
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+          }
+        }
+      });
     });
   </script>
 </body>
 </html>
+
