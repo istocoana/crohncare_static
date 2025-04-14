@@ -1053,7 +1053,7 @@
         <a href="#solutie" class="btn">Descoperă aplicația</a>
       </div>
       <div class="hero-image fade-in">
-        <img src="/images/app_prev.png" alt="CrohnCare App Preview" width="365px">
+        <img src="/images/app_prev.png" alt="CrohnCare App Preview" width="420px">
       </div>
     </div>
   </header>
@@ -1410,36 +1410,77 @@
     window.addEventListener('load', revealOnScroll);
 
     // Form submission
-    const contactForm = document.getElementById('form-contact');
-    const contactMsg = document.getElementById('msg-contact');
-    
-    contactForm?.addEventListener('submit', function(e) {
-      e.preventDefault();
-      contactMsg.textContent = "✅ Mesaj trimis cu succes!";
-      contactMsg.classList.add('success');
-      contactForm.reset();
-      
-      // Simulate form submission
-      setTimeout(() => {
-        contactMsg.textContent = "";
-      }, 5000);
-    });
-
     const subscribeForm = document.getElementById('subscribe-form');
     const formMsg = document.getElementById('form-msg');
-    
-    subscribeForm?.addEventListener('submit', function(e) {
+
+    subscribeForm?.addEventListener('submit', async function(e) {
       e.preventDefault();
-      formMsg.textContent = "✅ Te-ai abonat cu succes! Vei primi un email când lansăm aplicația.";
-      formMsg.classList.add('success');
-      subscribeForm.reset();
-      
-      // Simulate form submission
+      const formData = new FormData(subscribeForm);
+      const email = formData.get('email');
+
+      const url = 'https://script.google.com/macros/s/AKfycbwKvAIMRkX8QBH-LE6YvJxCbFPPvKRdaiw-HjOvBiejkK-b4aoA42N_axXLvnT4ZsP5/exec';
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: new URLSearchParams({ email })
+        });
+
+        const result = await response.json();
+        if (result.result === 'success') {
+          formMsg.textContent = "✅ Te-ai abonat cu succes!";
+          formMsg.classList.add('success');
+          subscribeForm.reset();
+        } 
+      } catch (error) {
+        formMsg.textContent = "❌ Nu s-a putut trimite datele.";
+        formMsg.classList.add('error');
+      }
+
       setTimeout(() => {
         formMsg.textContent = "";
+        formMsg.classList.remove('success', 'error');
       }, 5000);
     });
 
+    const contactForm = document.getElementById('form-contact');
+    const contactMsg = document.getElementById('msg-contact');
+
+    contactForm?.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      };
+
+      const url = "https://script.google.com/macros/s/AKfycbyqf68r_lyhQEFDk3MsTD5mHeDo-A7AzS6a93rkKQRccMoe2ke2YfVf_V447e6Bs1fb/exec"; // ← înlocuiește aici
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: new URLSearchParams(data)
+        });
+
+        const result = await response.json();
+        if (result.result === 'success') {
+          contactMsg.textContent = "✅ Mesaj trimis cu succes!";
+          contactMsg.classList.add('success');
+          contactForm.reset();
+        }
+      } catch (error) {
+        contactMsg.textContent = "❌ Eroare de rețea sau permisiune.";
+        contactMsg.classList.add('error');
+      }
+
+      setTimeout(() => {
+        contactMsg.textContent = "";
+        contactMsg.classList.remove('success', 'error');
+      }, 5000);
+    });
+      
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
