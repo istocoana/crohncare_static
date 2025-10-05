@@ -12,13 +12,14 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     :root {
-      --primary: #b76672;
-      --secondary: #b0c4b1;
-      --accent: #edafb8;
-      --light: #f5d5db;
-      --lighter: #c5e0dc;
-      --dark: #4a5759;
-      --bg: #fff8f5;
+      /* Updated to match app color scheme */
+      --primary: #37474f;
+      --secondary: #b9cbb9;
+      --accent: #ffa0b3;
+      --light: #f5f5f5;
+      --lighter: #e8eef0;
+      --dark: #37474f;
+      --bg: #fafafa;
       --white: #ffffff;
     }
 
@@ -58,12 +59,14 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(237, 175, 184, 0.2);
+      /* Updated shadow color */
+      box-shadow: 0 2px 10px rgba(55, 71, 79, 0.1);
     }
 
     nav.scrolled {
       background-color: var(--white);
-      box-shadow: 0 2px 10px rgba(237, 175, 184, 0.4);
+      /* Updated shadow color */
+      box-shadow: 0 2px 10px rgba(55, 71, 79, 0.15);
       padding: 10px 5%;
     }
 
@@ -190,7 +193,8 @@
     }
 
     .table-of-contents {
-      background: rgba(245, 213, 219, 0.2);
+      /* Updated background to use accent color */
+      background: rgba(255, 160, 179, 0.1);
       padding: 20px 30px;
       border-radius: 10px;
       margin-bottom: 30px;
@@ -253,6 +257,7 @@
       left: 0;
       width: 50px;
       height: 3px;
+      /* Using accent color */
       background-color: var(--accent);
       border-radius: 2px;
     }
@@ -433,9 +438,10 @@
         </div>
 
         <h2 id="introducere">1. Introducere</h2>
-        <p>Bine ați venit la Politica de Confidențialitate a CrohnCare. Respectăm dreptul dumneavoastră la confidențialitate și ne angajăm să protejăm datele personale și medicale pe care le colectăm.</p>
-        <p>Această politică de confidențialitate descrie practicile noastre privind colectarea, utilizarea și divulgarea informațiilor dumneavoastră atunci când utilizați aplicația CrohnCare și serviciile asociate.</p>
-        <p>Vă rugăm să citiți cu atenție această politică pentru a înțelege cum tratăm datele dumneavoastră. Prin utilizarea CrohnCare, sunteți de acord cu practicile descrise în această politică.</p>
+        <!-- More professional privacy policy introduction -->
+        <p>Bine ați venit la Politica de Confidențialitate a CrohnCare. Protecția datelor dumneavoastră personale și medicale reprezintă o prioritate fundamentală pentru organizația noastră. Ne angajăm să respectăm cele mai înalte standarde de confidențialitate și securitate a informațiilor.</p>
+        <p>Această politică de confidențialitate descrie în detaliu practicile noastre privind colectarea, prelucrarea, stocarea și protecția informațiilor dumneavoastră atunci când utilizați aplicația CrohnCare și serviciile asociate.</p>
+        <p>Vă rugăm să citiți cu atenție această politică pentru a înțelege modul în care gestionăm datele dumneavoastră. Prin utilizarea platformei CrohnCare, confirmați că ați luat cunoștință și sunteți de acord cu practicile descrise în acest document.</p>
 
         <h2 id="date-colectate">2. Datele pe care le colectăm</h2>
         <p>Pentru a vă oferi serviciile noastre, colectăm următoarele tipuri de informații:</p>
@@ -452,16 +458,18 @@
         </ul>
 
         <h3>2.2. Informații medicale</h3>
-        <p>Pentru a vă oferi funcționalitățile complete ale aplicației, colectăm următoarele informații medicale:</p>
+        <!-- More clinical and professional medical data description -->
+        <p>Pentru a vă oferi funcționalitățile complete ale platformei medicale, colectăm următoarele informații clinice:</p>
         <ul>
-          <li>Simptome și severitatea acestora</li>
-          <li>Frecvența scaunelor</li>
-          <li>Dureri abdominale</li>
-          <li>Starea generală de sănătate</li>
-          <li>Greutate corporală</li>
-          <li>Tratamente și medicamente</li>
-          <li>Rezultate ale analizelor medicale (dacă alegeți să le introduceți)</li>
-          <li>Istoricul medical legat de boala Crohn</li>
+          <li>Simptomatologie și severitatea manifestărilor clinice</li>
+          <li>Frecvența și caracteristicile scaunelor</li>
+          <li>Intensitatea și localizarea durerii abdominale</li>
+          <li>Evaluarea stării generale de sănătate</li>
+          <li>Parametri antropometrici (greutate, înălțime)</li>
+          <li>Tratamente farmacologice și scheme terapeutice</li>
+          <li>Rezultate ale investigațiilor paraclinice (dacă alegeți să le introduceți)</li>
+          <li>Anamneză medicală relevantă pentru boala Crohn</li>
+          <li>Scor CDAI (Crohn's Disease Activity Index) calculat automat</li>
         </ul>
 
         <h3>2.3. Informații de utilizare</h3>
@@ -479,13 +487,14 @@
         <h2 id="utilizare-date">3. Cum utilizăm datele dumneavoastră</h2>
         <p>Utilizăm datele colectate pentru următoarele scopuri:</p>
         
-        <h3>3.1. Furnizarea serviciilor</h3>
+        <h3>3.1. Furnizarea serviciilor medicale</h3>
         <ul>
-          <li>Crearea și gestionarea contului dumneavoastră</li>
-          <li>Calcularea scorului CDAI și monitorizarea evoluției bolii</li>
-          <li>Generarea de rapoarte și grafice pentru vizualizarea datelor</li>
-          <li>Facilitarea comunicării cu medicul dumneavoastră (dacă alegeți această opțiune)</li>
-          <li>Trimiterea de notificări și mementouri legate de tratament</li>
+          <li>Crearea și administrarea contului dumneavoastră de utilizator</li>
+          <li>Calcularea scorului CDAI și monitorizarea evoluției clinice a bolii</li>
+          <li>Generarea de rapoarte medicale și reprezentări grafice pentru vizualizarea datelor clinice</li>
+          <li>Facilitarea comunicării securizate cu echipa medicală (dacă alegeți această opțiune)</li>
+          <li>Transmiterea de notificări și mementouri legate de administrarea tratamentului</li>
+          <li>Asigurarea continuității îngrijirii medicale prin monitorizare la distanță</li>
         </ul>
 
         <h3>3.2. Îmbunătățirea serviciilor</h3>
@@ -505,8 +514,9 @@
         <h2 id="partajare-date">4. Partajarea datelor</h2>
         <p>Protejăm confidențialitatea datelor dumneavoastră și le partajăm doar în următoarele situații:</p>
         
-        <h3>4.1. Cu medicii</h3>
-        <p>Datele dumneavoastră medicale pot fi partajate cu medicii pe care îi autorizați explicit în aplicație. Puteți controla în orice moment ce date sunt partajate și cu cine.</p>
+        <h3>4.1. Cu profesioniștii din domeniul medical</h3>
+        <!-- More professional medical data sharing description -->
+        <p>Datele dumneavoastră medicale pot fi partajate cu medicii specialiști și profesioniștii din domeniul sănătății pe care îi autorizați explicit în platformă. Aveți control complet asupra accesului la datele dumneavoastră și puteți modifica în orice moment permisiunile acordate, specificând ce informații sunt partajate și cu care membri ai echipei medicale.</p>
 
         <h3>4.2. Cu furnizorii de servicii</h3>
         <p>Colaborăm cu furnizori de servicii terți care ne ajută să operăm, să furnizăm și să îmbunătățim serviciile noastre (de exemplu, servicii de găzduire, analiză, asistență pentru clienți). Acești furnizori au acces limitat la datele dumneavoastră, strict pentru a îndeplini aceste sarcini în numele nostru, și sunt obligați contractual să nu le divulge sau să le utilizeze în alte scopuri.</p>
@@ -515,14 +525,17 @@
         <p>Putem divulga datele dumneavoastră dacă suntem obligați prin lege să facem acest lucru sau ca răspuns la solicitări legale valide din partea autorităților publice.</p>
 
         <h2 id="securitate">5. Securitatea datelor</h2>
-        <p>Securitatea datelor dumneavoastră este o prioritate pentru noi. Implementăm măsuri tehnice și organizaționale adecvate pentru a proteja datele împotriva accesului neautorizat, modificării, divulgării sau distrugerii:</p>
+        <!-- More professional security description -->
+        <p>Securitatea și confidențialitatea datelor dumneavoastră medicale reprezintă o prioritate absolută. Implementăm măsuri tehnice și organizaționale avansate, conforme cu standardele internaționale de securitate a informațiilor medicale, pentru a proteja datele împotriva accesului neautorizat, modificării, divulgării sau distrugerii:</p>
         <ul>
-          <li>Criptarea datelor în tranzit și în repaus</li>
-          <li>Autentificare cu doi factori pentru accesul la cont</li>
-          <li>Acces restricționat la date pentru personalul nostru</li>
-          <li>Monitorizare regulată a sistemelor pentru detectarea vulnerabilităților</li>
-          <li>Audituri de securitate periodice</li>
-          <li>Instruirea personalului cu privire la practicile de securitate a datelor</li>
+          <li>Criptare end-to-end pentru datele în tranzit și criptare AES-256 pentru datele stocate</li>
+          <li>Autentificare multi-factor pentru accesul la cont</li>
+          <li>Control strict al accesului bazat pe roluri pentru personalul autorizat</li>
+          <li>Monitorizare continuă și detectare automată a amenințărilor de securitate</li>
+          <li>Audituri de securitate periodice efectuate de specialiști independenți</li>
+          <li>Conformitate cu standardele GDPR și reglementările privind protecția datelor medicale</li>
+          <li>Backup-uri regulate și planuri de recuperare în caz de dezastru</li>
+          <li>Formare continuă a personalului privind securitatea și confidențialitatea datelor medicale</li>
         </ul>
 
         <h2 id="drepturi">6. Drepturile dumneavoastră</h2>

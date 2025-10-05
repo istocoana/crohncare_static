@@ -12,14 +12,17 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     :root {
-      --primary: #b76672;
-      --secondary: #b0c4b1;
-      --accent: #edafb8;
-      --light: #f5d5db;
-      --lighter: #c5e0dc;
-      --dark: #4a5759;
-      --bg: #fff8f5;
+      /* Updated color palette to match app screenshots */
+      --primary: #37474f;
+      --secondary: #b9cbb9;
+      --accent: #ffa0b3;
+      --light: #f5f5f5;
+      --lighter: #e8eef0;
+      --dark: #37474f;
+      --bg: #fafafa;
       --white: #ffffff;
+      --success: #b9cbb9;
+      --warning: #ffa0b3;
     }
 
     * {
@@ -58,12 +61,14 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(237, 175, 184, 0.2);
+      /* Updated shadow color to match app */
+      box-shadow: 0 2px 10px rgba(55, 71, 79, 0.1);
     }
 
     nav.scrolled {
       background-color: var(--white);
-      box-shadow: 0 2px 10px rgba(237, 175, 184, 0.4);
+      /* Updated shadow color */
+      box-shadow: 0 2px 10px rgba(55, 71, 79, 0.15);
       padding: 10px 5%;
     }
 
@@ -185,23 +190,28 @@
       font-size: 1rem;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(183, 102, 114, 0.3);
+      /* Updated shadow to match app style */
+      box-shadow: 0 4px 10px rgba(55, 71, 79, 0.2);
     }
 
     .btn:hover {
-      background-color: #a05561;
+      /* Darker shade of primary color */
+      background-color: #2d3a40;
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(183, 102, 114, 0.4);
+      box-shadow: 0 6px 15px rgba(55, 71, 79, 0.3);
     }
 
     .btn-secondary {
       background-color: var(--secondary);
-      box-shadow: 0 4px 10px rgba(176, 196, 177, 0.3);
+      /* Updated shadow color */
+      box-shadow: 0 4px 10px rgba(185, 203, 185, 0.3);
+      color: var(--dark);
     }
 
     .btn-secondary:hover {
-      background-color: #95a996;
-      box-shadow: 0 6px 15px rgba(176, 196, 177, 0.4);
+      /* Darker shade of secondary */
+      background-color: #a5b5a5;
+      box-shadow: 0 6px 15px rgba(185, 203, 185, 0.4);
     }
 
     .floating-area {
@@ -233,17 +243,17 @@
       50% { transform: translateY(-20px) rotate(5deg); }
     }
 
-    /* Features Section */
+    /* Section Common Styles */
     section {
       padding: 100px 0;
     }
 
-    .section-title {
+    .section-header {
       text-align: center;
       margin-bottom: 60px;
     }
 
-    .section-title h2 {
+    .section-header h2 {
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 15px;
@@ -251,7 +261,7 @@
       display: inline-block;
     }
 
-    .section-title h2::after {
+    .section-header h2::after {
       content: '';
       position: absolute;
       bottom: -10px;
@@ -259,17 +269,30 @@
       transform: translateX(-50%);
       width: 80px;
       height: 4px;
+      /* Using accent color for underline */
       background-color: var(--accent);
       border-radius: 2px;
     }
 
-    .section-title p {
+    .section-header p {
       font-size: 1.1rem;
       color: var(--dark);
       max-width: 700px;
       margin: 0 auto;
+      line-height: 1.7;
     }
 
+    .text-balance {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--dark);
+    }
+
+
+    /* Features Section */
     .feature-card {
       background: var(--white);
       border-radius: 16px;
@@ -313,181 +336,229 @@
       background-color: var(--white);
     }
 
-    .problem-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .problem-content {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .problem-image {
-      flex: 1;
-      min-width: 300px;
-      text-align: center;
-    }
-
-    .problem-image img {
-      max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .problem-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .problem-list li {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
-    }
-
-    .problem-list li i {
-      color: var(--primary);
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-
-    /* Solution Section */
-    #solutie {
-      background-color: var(--bg);
-    }
-
-    .solution-container {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-    }
-
-    .solution-features {
+    .problema-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
     }
 
-    .solution-feature {
-      background: var(--white);
+    .problema-card {
+      background: var(--bg);
       border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      /* Updated shadow colors */
+      box-shadow: 0 10px 30px rgba(55, 71, 79, 0.08);
       transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
     }
 
-    .solution-feature:hover {
+    .problema-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 15px 40px rgba(55, 71, 79, 0.12);
     }
 
-    .solution-feature i {
+    .problema-icon {
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 20px;
     }
 
-    .solution-feature h3 {
+    .problema-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .problema-card p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* Solution Section */
+    #solutie {
+      background-color: var(--white);
+    }
+
+    .solutie-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--bg), var(--light));
+    }
+
+    .solutie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .solutie-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 30px;
+      /* Updated shadow colors */
+      box-shadow: 0 10px 30px rgba(55, 71, 79, 0.08);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .solutie-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(55, 71, 79, 0.12);
+    }
+
+    .solutie-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .solutie-card h3 {
       font-size: 1.3rem;
       margin-bottom: 10px;
       color: var(--dark);
+      font-weight: 600;
     }
 
-    .solution-feature p {
+    .solutie-card p {
       font-size: 0.95rem;
       color: #666;
+      line-height: 1.7;
     }
 
-    .app-screenshots {
-      display: flex;
-      gap: 30px;
-      overflow-x: auto;
-      padding: 20px 0;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
+    /* Screenshots Section */
+    .screenshots-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--bg), var(--light));
     }
 
-    .app-screenshots::-webkit-scrollbar {
-      display: none;
+    .screenshots-grid {
+      display: grid;
+      gap: 40px;
+      margin-top: 60px;
     }
 
-    .screenshot {
-      flex: 0 0 auto;
-      width: 300px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      scroll-snap-align: center;
+    .screenshot-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      /* Updated shadow colors */
+      box-shadow: 0 10px 40px rgba(55, 71, 79, 0.08);
       transition: all 0.3s ease;
     }
 
-    .screenshot:hover {
-      transform: scale(1.05);
+    .screenshot-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(55, 71, 79, 0.12);
     }
 
-    .screenshot img {
+    .screenshot-card:nth-child(even) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .screenshot-card:nth-child(even) .screenshot-image {
+      order: 2;
+    }
+
+    .screenshot-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .screenshot-image img {
       width: 100%;
       height: auto;
       display: block;
+      transition: transform 0.3s ease;
     }
 
+    .screenshot-card:hover .screenshot-image img {
+      transform: scale(1.02);
+    }
+
+    .screenshot-content h3 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .screenshot-content p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--dark);
+    }
+
+    @media (max-width: 992px) {
+      .screenshot-card {
+        grid-template-columns: 1fr !important;
+        gap: 25px;
+        padding: 30px;
+      }
+
+      .screenshot-card:nth-child(even) .screenshot-image {
+        order: 1;
+      }
+    }
+
+
     /* Future Section */
-    #viitor {
+    .viitor-section {
+      padding: 100px 0;
       background: linear-gradient(135deg, var(--lighter), var(--light));
       position: relative;
       overflow: hidden;
     }
 
-    .future-container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .future-grid {
+    .viitor-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
+      margin-top: 50px;
     }
 
-    .future-card {
+    .viitor-card {
       background: rgba(255, 255, 255, 0.9);
       border-radius: 16px;
       padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      /* Updated shadow colors */
+      box-shadow: 0 10px 30px rgba(55, 71, 79, 0.08);
       transition: all 0.3s ease;
       text-align: center;
     }
 
-    .future-card:hover {
+    .viitor-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 15px 35px rgba(55, 71, 79, 0.12);
     }
 
-    .future-card i {
+    .viitor-icon {
       font-size: 3rem;
       color: var(--primary);
       margin-bottom: 20px;
     }
 
-    .future-card h3 {
+    .viitor-card h3 {
       font-size: 1.4rem;
       margin-bottom: 15px;
       color: var(--dark);
+      font-weight: 600;
     }
 
-    .future-card p {
+    .viitor-card p {
       font-size: 1rem;
       color: #666;
+      line-height: 1.7;
     }
 
     /* Team Section */
@@ -502,8 +573,9 @@
     .team-description {
       max-width: 800px;
       margin: 0 auto 50px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1.8;
+      color: var(--dark);
     }
 
     .team-members {
@@ -669,7 +741,8 @@
 
     /* Newsletter Section */
     #newsletter {
-      background: linear-gradient(135deg, var(--primary), #a05561);
+      /* Updated gradient to use app colors */
+      background: linear-gradient(135deg, var(--primary), #2d3a40);
       color: var(--white);
       padding: 80px 0;
     }
@@ -763,6 +836,7 @@
       left: 0;
       width: 50px;
       height: 3px;
+      /* Using accent color */
       background-color: var(--accent);
       border-radius: 2px;
     }
@@ -888,7 +962,7 @@
         display: block;
       }
 
-      .section-title h2 {
+      .section-header h2 {
         font-size: 2rem;
       }
 
@@ -914,7 +988,7 @@
         font-size: 1rem;
       }
 
-      .section-title h2 {
+      .section-header h2 {
         font-size: 1.8rem;
       }
 
@@ -1061,109 +1135,150 @@
   <!-- Problem Section -->
   <section id="problema">
     <div class="container">
-      <div class="section-title fade-in">
-        <h2>Provocările în viața cu Crohn</h2>
-        <p>Pacienții cu boala Crohn se confruntă zilnic cu numeroase dificultăți în gestionarea afecțiunii lor.</p>
+      <div class="section-header fade-in">
+        <h2>De ce contează</h2>
+        <!-- More professional medical language -->
+        <p class="text-balance">
+          Boala Crohn este o afecțiune inflamatorie cronică intestinală care afectează semnificativ calitatea vieții pacienților. Monitorizarea constantă și comunicarea eficientă cu echipa medicală sunt esențiale pentru managementul optim al bolii.
+        </p>
       </div>
-      <div class="problem-container">
-        <div class="problem-content fade-in">
-          <ul class="problem-list">
-            <li>
-              <i class="bi bi-graph-down"></i>
-              <div>
-                <strong>Lipsa unui mod organizat pentru urmărirea simptomelor</strong>
-                <p>Pacienții nu au un sistem eficient pentru a-și monitoriza starea de sănătate zilnică.</p>
-              </div>
-            </li>
-            <li>
-              <i class="bi bi-calculator"></i>
-              <div>
-                <strong>Imposibilitatea calculării scorului CDAI</strong>
-                <p>Scorul CDAI este esențial pentru evaluarea activității bolii, dar este dificil de calculat manual.</p>
-              </div>
-            </li>
-            <li>
-              <i class="bi bi-folder-x"></i>
-              <div>
-                <strong>Fără acces centralizat la date</strong>
-                <p>Informațiile medicale sunt adesea împrăștiate în diverse locuri, făcând dificilă urmărirea istoricului medical.</p>
-              </div>
-            </li>
-            <li>
-              <i class="bi bi-telephone-x"></i>
-              <div>
-                <strong>Comunicarea deficitară cu medicul</strong>
-                <p>Lipsa unui canal direct de comunicare între pacient și medic duce la întârzieri în tratament.</p>
-              </div>
-            </li>
-            <li>
-              <i class="bi bi-geo-alt"></i>
-              <div>
-                <strong>Nevoie de localizare rapidă a WC-urilor</strong>
-                <p>Accesul rapid la toalete publice este o necesitate pentru pacienții cu Crohn.</p>
-              </div>
-            </li>
-          </ul>
+      <div class="problema-grid">
+        <div class="problema-card">
+          <div class="problema-icon">
+            <i class="bi bi-calendar-x"></i>
+          </div>
+          <h3>Monitorizare inconsistentă</h3>
+          <!-- More professional tone -->
+          <p>Pacienții întâmpină dificultăți în urmărirea sistematică a simptomelor zilnice, ceea ce poate afecta acuratețea evaluării clinice și ajustarea tratamentului.</p>
         </div>
-        <div class="problem-image fade-in">
-          <img src="/images/pacient.png" alt="Pacient cu boala Crohn" width="400px">
+        <div class="problema-card">
+          <div class="problema-icon">
+            <i class="bi bi-chat-left-dots"></i>
+          </div>
+          <h3>Comunicare limitată</h3>
+          <!-- More professional medical terminology -->
+          <p>Intervalele lungi între consultații pot duce la întârzieri în identificarea exacerbărilor și ajustarea terapiei, afectând prognosticul pe termen lung.</p>
+        </div>
+        <div class="problema-card">
+          <div class="problema-icon">
+            <i class="bi bi-graph-down"></i>
+          </div>
+          <h3>Lipsa vizualizării progresului</h3>
+          <!-- More clinical language -->
+          <p>Absența unei perspective clare asupra evoluției bolii poate diminua aderența la tratament și capacitatea de a identifica factorii declanșatori.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Solution Section -->
-  <section id="solutie">
+  <section id="solutie" class="solutie-section">
     <div class="container">
-      <div class="section-title fade-in">
-        <h2>Cum ajută CrohnCare</h2>
-        <p>Aplicația noastră oferă soluții complete pentru gestionarea eficientă a bolii Crohn.</p>
+      <div class="section-header">
+        <h2>Cum ajutăm</h2>
+        <!-- More professional description -->
+        <p class="text-balance">
+          CrohnCare oferă o platformă digitală integrată pentru monitorizarea clinică și managementul personalizat al bolii Crohn, facilitând colaborarea între pacient și echipa medicală.
+        </p>
       </div>
-      <div class="solution-container">
-        <div class="solution-features fade-in">
-          <div class="solution-feature">
-            <i class="bi bi-journal-text"></i>
-            <h3>Jurnal zilnic</h3>
-            <p>Înregistrează simptomele, starea de spirit și activitățile zilnice pentru a identifica factori declanșatori.</p>
+      <div class="solutie-grid">
+        <div class="solutie-card">
+          <div class="solutie-icon">
+            <i class="bi bi-journal-medical"></i>
           </div>
-          <div class="solution-feature">
-            <i class="bi bi-graph-up"></i>
-            <h3>Calcul automat CDAI</h3>
-            <p>Calculează automat scorul CDAI bazat pe datele introduse în jurnal pentru o evaluare precisă a activității bolii.</p>
+          <h3>Jurnal medical zilnic</h3>
+          <!-- More clinical terminology -->
+          <p>Documentați simptomele, frecvența scaunelor, intensitatea durerii și starea generală într-un format structurat, ușor de analizat.</p>
+        </div>
+        <div class="solutie-card">
+          <div class="solutie-icon">
+            <i class="bi bi-calculator"></i>
           </div>
-          <div class="solution-feature">
-            <i class="bi bi-people"></i>
-            <h3>Asociere pacient-medic</h3>
-            <p>Conectează pacienții cu medicii lor pentru o comunicare eficientă și monitorizare continuă.</p>
+          <h3>Calcul automat CDAI</h3>
+          <!-- More professional medical description -->
+          <p>Calcularea automată a indicelui de activitate al bolii Crohn (CDAI) pentru evaluarea obiectivă a severității și monitorizarea răspunsului la tratament.</p>
+        </div>
+        <div class="solutie-card">
+          <div class="solutie-icon">
+            <i class="bi bi-graph-up-arrow"></i>
           </div>
-          <div class="solution-feature">
+          <h3>Analiză și vizualizare</h3>
+          <!-- More professional language -->
+          <p>Grafice interactive și rapoarte detaliate care evidențiază tendințele clinice și facilitează identificarea pattern-urilor în evoluția bolii.</p>
+        </div>
+        <div class="solutie-card">
+          <div class="solutie-icon">
             <i class="bi bi-capsule"></i>
-            <h3>Gestionare tratamente</h3>
-            <p>Organizează și primește notificări pentru medicație, programări și analize medicale.</p>
           </div>
-          <div class="solution-feature">
-            <i class="bi bi-shield-lock"></i>
-            <h3>Acces securizat</h3>
-            <p>Protejează datele medicale sensibile cu sisteme avansate de securitate și control al accesului.</p>
+          <h3>Gestionare tratament</h3>
+          <!-- More clinical description -->
+          <p>Urmăriți medicația, dozele și programul de administrare, cu notificări automate pentru asigurarea aderenței terapeutice.</p>
+        </div>
+        <div class="solutie-card">
+          <div class="solutie-icon">
+            <i class="bi bi-hospital"></i>
           </div>
-          <div class="solution-feature">
-            <i class="bi bi-map"></i>
-            <h3>Hartă WC-uri publice</h3>
-            <p>Localizează rapid toaletele publice din apropiere pentru situații de urgență.</p>
+          <h3>Comunicare cu medicul</h3>
+          <!-- More professional medical language -->
+          <p>Partajați datele clinice în timp real cu echipa medicală, facilitând monitorizarea la distanță și intervenția promptă când este necesar.</p>
+        </div>
+        <div class="solutie-card">
+          <div class="solutie-icon">
+            <i class="bi bi-bell"></i>
+          </div>
+          <h3>Alerte și notificări</h3>
+          <p>Primiți notificări personalizate pentru programarea medicamentelor, urmărirea simptomelor sau recomandări medicale, îmbunătățind aderența și managementul bolii.</p>
+        </div>
+        <!-- Removed the "Hartă WC public" card as requested -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots Section -->
+  <!-- Completely redesigned screenshots section to be more professional -->
+  <section id="capturi" class="screenshots-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Interfață intuitivă și funcțională</h2>
+        <p class="text-balance">
+          Platforma CrohnCare este concepută pentru a oferi o experiență simplă și eficientă, permițând pacienților să își monitorizeze starea de sănătate cu ușurință.
+        </p>
+      </div>
+      <div class="screenshots-grid">
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="/images/screenshot-1.png" alt="Ecran principal CrohnCare" />
+          </div>
+          <div class="screenshot-content">
+            <h3>Tablou de bord centralizat</h3>
+            <p>Vizualizați rapid indicatorii cheie de sănătate, inclusiv scorul CDAI și evoluția clinică. Accesați toate funcționalitățile aplicației dintr-o singură interfață intuitivă, concepută pentru monitorizare eficientă.</p>
           </div>
         </div>
-        <div class="app-screenshots fade-in">
-          <div class="screenshot">
-            <img src="/images/Journal_screen.png" alt="Ecran jurnal CrohnCare" height="600px" width="300px">
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="/images/screenshot-2.png" alt="Jurnal medical CrohnCare" />
           </div>
-          <div class="screenshot">
-            <img src="/images/Evolution_Screen.png" alt="Ecran evoluție CrohnCare" height="600px" width="300px">
+          <div class="screenshot-content">
+            <h3>Înregistrare simplificată a simptomelor</h3>
+            <p>Documentați simptomele zilnice prin formulare structurate și validate clinic. Interfața intuitivă permite înregistrarea rapidă a manifestărilor clinice, facilitând monitorizarea sistematică a evoluției bolii.</p>
           </div>
-          <div class="screenshot">
-            <img src="/images/Evolution_Screen2.png" alt="Ecran evoluție CrohnCare" height="600px" width="300px">
+        </div>
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="/images/screenshot-3.png" alt="Grafice și analiză CrohnCare" />
           </div>
-          <div class="screenshot">
-            <img src="/images/Wc_Screen.png" alt="Ecran hartă CrohnCare" height="600px"  width="300px">
+          <div class="screenshot-content">
+            <h3>Analiză vizuală și istoric medical</h3>
+            <p>Grafice clare și rapoarte comprehensive care evidențiază tendințele clinice pe perioade selectabile. Vizualizați evoluția scorului CDAI și identificați pattern-urile în activitatea bolii pentru o comunicare eficientă cu medicul.</p>
+          </div>
+        </div>
+        <div class="screenshot-card">
+          <div class="screenshot-image">
+            <img src="/images/screenshot-4.png" alt="Completare jurnal zilnic" />
+          </div>
+          <div class="screenshot-content">
+            <h3>Completare jurnal zilnic structurat</h3>
+            <p>Formulare medicale validate clinic pentru înregistrarea sistematică a simptomelor, stării generale și măsurătorilor. Interfața ghidată asigură colectarea completă și precisă a datelor necesare calculului CDAI.</p>
           </div>
         </div>
       </div>
@@ -1171,28 +1286,51 @@
   </section>
 
   <!-- Future Section -->
-  <section id="viitor">
+  <section id="viitor" class="viitor-section">
     <div class="container">
-      <div class="section-title fade-in">
+      <div class="section-header">
         <h2>Ce urmează</h2>
-        <p>Suntem în continuă dezvoltare pentru a aduce funcționalități noi care să îmbunătățească experiența utilizatorilor noștri.</p>
+        <!-- Updated subtitle to match requirements -->
+        <!-- <p class="text-balance">
+          Funcționalități viitoare pentru o experiență mai bună
+        </p> -->
       </div>
-      <div class="future-grid fade-in">
-        <div class="future-card">
-          <i class="bi bi-bell"></i>
-          <h3>Notificări inteligente</h3>
-          <p>Sistem avansat de notificări personalizate bazate pe pattern-urile identificate în datele pacientului.</p>
+      <div class="viitor-grid">
+        <!-- Updated future features to match requirements -->
+        <div class="viitor-card">
+          <div class="viitor-icon">
+            <i class="bi bi-phone"></i>
+          </div>
+          <h3>Aplicație mobilă iOS/Android</h3>
+          <p>Aplicații native pentru iOS și Android, oferind acces complet la toate funcționalitățile CrohnCare, oriunde și oricând.</p>
         </div>
-        <div class="future-card">
-          <i class="bi bi-phone"></i>
-          <h3>Aplicație mobilă</h3>
-          <p>Acces la toate funcționalitățile CrohnCare direct de pe telefonul mobil, disponibil pentru iOS și Android.</p>
+        <!-- <div class="viitor-card">
+          <div class="viitor-icon">
+            <i class="bi bi-people"></i>
+          </div>
+          <h3>Comunitate online / forum pacienți</h3>
+          <p>Platformă securizată pentru conectarea pacienților, partajarea experiențelor și suport reciproc, moderată de specialiști.</p>
+        </div> -->
+        <div class="viitor-card">
+          <div class="viitor-icon">
+            <i class="bi bi-rocket-takeoff"></i>
+          </div>
+          <h3>Lansare oficială aplicație</h3>
+          <p>Lansarea completă a platformei CrohnCare cu toate funcționalitățile validate clinic și optimizate pentru utilizatori.</p>
         </div>
-        <div class="future-card">
-          <i class="bi bi-people-fill"></i>
-          <h3>Comunitate online</h3>
-          <p>Platformă de suport unde pacienții pot împărtăși experiențe și sfaturi într-un mediu sigur.</p>
+            <div class="viitor-card">
+          <div class="viitor-icon">
+            <i class="bi bi-bell"></i>
+          </div>
+          <h3>Notificări inteligente personalizate</h3>
+          <p>Sistem avansat de notificări adaptate nevoilor individuale, cu alerte pentru medicație, programări și monitorizare simptome.</p>
         </div>
+      </div>
+      <!-- Added mention about clinical study guiding development -->
+      <div class="section-header" style="margin-top: 40px; margin-bottom: 0;">
+        <p class="text-balance" style="font-size: 0.95rem; color: #666;">
+          Studiul clinic pilot continuă să ghideze prioritățile noastre de dezvoltare, asigurându-ne că fiecare funcționalitate nouă răspunde nevoilor reale ale pacienților.
+        </p>
       </div>
     </div>
   </section>
@@ -1200,49 +1338,84 @@
   <!-- Team Section -->
   <section id="despre">
     <div class="container">
-      <div class="section-title fade-in">
+      <div class="section-header fade-in">
         <h2>Echipa CrohnCare</h2>
-        <p>Suntem o echipă interdisciplinară dedicată îmbunătățirii vieții pacienților cu boala Crohn.</p>
+        <p>Echipă interdisciplinară dedicată îmbunătățirii vieții pacienților cu boala Crohn</p>
       </div>
       <div class="team-container">
         <div class="team-description fade-in">
-          <p>Echipa noastră îmbină expertiza în tehnologie, medicină și design empatic pentru a oferi o soluție reală, accesibilă și centrată pe pacient. Fiecare membru al echipei aduce perspective valoroase și experiență în domeniul său, contribuind la dezvoltarea unei aplicații care răspunde nevoilor reale ale pacienților cu boala Crohn.</p>
+          <!-- Updated team description to be more professional and mention clinical study -->
+          <p>Echipa noastră îmbină expertiza în tehnologie, medicină și design pentru a oferi o soluție reală, accesibilă și centrată pe pacient. Coordonăm studiul clinic pilot și validarea aplicației, asigurându-ne că fiecare funcționalitate răspunde nevoilor reale ale pacienților cu boala Crohn și standardelor medicale actuale.</p>
         </div>
-        <!-- <div class="team-members fade-in">
+        <!-- Added 6 team members with photos, names, roles, and social links -->
+        <div class="team-members fade-in">
           <div class="team-member">
-            <img src="/placeholder.svg?height=250&width=250" alt="Membru echipă">
+            <img src="/images/team/ana_popescu.jpg" alt="Dr. Ana Popescu">
             <div class="team-member-info">
               <h3>Dr. Ana Popescu</h3>
-              <p>Gastroenterolog</p>
+              <p>Consultant Gastroenterologie</p>
               <div class="team-member-social">
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-                <a href="#"><i class="bi bi-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/ana-popescu-example"><i class="bi bi-linkedin"></i></a>
+                <a href="mailto:ana.popescu@crohncare.com"><i class="bi bi-envelope"></i></a>
               </div>
             </div>
           </div>
           <div class="team-member">
-            <img src="/placeholder.svg?height=250&width=250" alt="Membru echipă">
+            <img src="/images/team/mihai_ionescu.jpg" alt="Mihai Ionescu">
             <div class="team-member-info">
               <h3>Mihai Ionescu</h3>
               <p>Lead Developer</p>
               <div class="team-member-social">
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-                <a href="#"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/mihai-ionescu-example"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/mihaiionescu"><i class="bi bi-github"></i></a>
               </div>
             </div>
           </div>
           <div class="team-member">
-            <img src="/placeholder.svg?height=250&width=250" alt="Membru echipă">
+            <img src="/images/team/elena_dumitrescu.jpg" alt="Elena Dumitrescu">
             <div class="team-member-info">
               <h3>Elena Dumitrescu</h3>
               <p>UX/UI Designer</p>
               <div class="team-member-social">
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-                <a href="#"><i class="bi bi-behance"></i></a>
+                <a href="https://www.linkedin.com/in/elena-dumitrescu-example"><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.behance.net/elenadumitrescu"><i class="bi bi-behance"></i></a>
               </div>
             </div>
           </div>
-        </div> -->
+          <div class="team-member">
+            <img src="/images/team/andrei_popa.jpg" alt="Andrei Popa">
+            <div class="team-member-info">
+              <h3>Andrei Popa</h3>
+              <p>Data Scientist</p>
+              <div class="team-member-social">
+                <a href="https://www.linkedin.com/in/andrei-popa-example"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/andreipopa"><i class="bi bi-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-member">
+            <img src="/images/team/maria_stanciu.jpg" alt="Dr. Maria Stanciu">
+            <div class="team-member-info">
+              <h3>Dr. Maria Stanciu</h3>
+              <p>Cercetător Clinic</p>
+              <div class="team-member-social">
+                <a href="https://www.linkedin.com/in/maria-stanciu-example"><i class="bi bi-linkedin"></i></a>
+                <a href="mailto:maria.stanciu@crohncare.com"><i class="bi bi-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-member">
+            <img src="/images/team/cristian_munteanu.jpg" alt="Cristian Munteanu">
+            <div class="team-member-info">
+              <h3>Cristian Munteanu</h3>
+              <p>Project Manager</p>
+              <div class="team-member-social">
+                <a href="https://www.linkedin.com/in/cristian-munteanu-example"><i class="bi bi-linkedin"></i></a>
+                <a href="mailto:cristian.munteanu@crohncare.com"><i class="bi bi-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1250,7 +1423,7 @@
   <!-- Contact Section -->
   <section id="contact">
     <div class="container">
-      <div class="section-title fade-in">
+      <div class="section-header fade-in">
         <h2>Contactează-ne</h2>
         <p>Ai întrebări sau sugestii? Suntem aici să te ajutăm.</p>
       </div>
@@ -1298,24 +1471,27 @@
   <!-- Help Us Section -->
   <section id="help-us">
     <div class="container">
-      <div class="section-title fade-in">
+      <div class="section-header fade-in">
         <h2>Ajută-ne să evoluăm</h2>
-        <p>Feedback-ul tău este esențial pentru a ne asigura că CrohnCare răspunde nevoilor reale ale pacienților cu boala Crohn.</p>
+        <!-- Updated subtitle to match requirements -->
+        <p>Feedback-ul tău este esențial în validarea aplicației și prioritizarea funcționalităților</p>
       </div>
       <div class="help-us-container fade-in">
         <div class="help-us-content">
-          <h3>Contribuie la dezvoltarea CrohnCare</h3>
-          <p>Suntem în etapa de validare a conceptului și avem nevoie de părerea ta pentru a îmbunătăți aplicația. Prin completarea formularului de validare, ne ajuți să:</p>
+          <!-- Updated content to match requirements with clinical study mention -->
+          <h3>Participă la validarea CrohnCare</h3>
+          <p>Suntem în etapa de validare a conceptului și studiu clinic pilot. Feedback-ul utilizatorului ne ajută să prioritizăm și să ajustăm funcționalitățile pentru a răspunde cel mai bine nevoilor reale ale pacienților cu boala Crohn.</p>
+          <p style="margin-bottom: 20px; font-weight: 500;">Prin participarea ta, contribui la:</p>
           <ul class="help-us-list">
-            <li><i class="bi bi-check-circle"></i> Identificăm funcționalitățile cele mai valoroase pentru utilizatori</li>
-            <li><i class="bi bi-check-circle"></i> Descoperim noi idei și sugestii de îmbunătățire</li>
-            <li><i class="bi bi-check-circle"></i> Prioritizăm dezvoltarea în funcție de nevoile reale</li>
-            <li><i class="bi bi-check-circle"></i> Creăm o aplicație care să facă o diferență reală în viața pacienților</li>
+            <li><i class="bi bi-check-circle"></i> Identificarea funcționalităților valoroase pentru pacienți</li>
+            <li><i class="bi bi-check-circle"></i> Descoperirea de noi idei și sugestii de îmbunătățire</li>
+            <li><i class="bi bi-check-circle"></i> Prioritizarea dezvoltării pe baza nevoilor reale</li>
+            <li><i class="bi bi-check-circle"></i> Crearea unei aplicații care face diferența în viața pacienților</li>
           </ul>
-          <a href="https://forms.gle/UhiPYE2ZrD5sDWhE7" class="btn">Completează formularul de validare</a>
+          <a href="https://forms.gle/UhiPYE2ZrD5sDWhE7" target="_blank" class="btn">Completează formularul de validare</a>
         </div>
         <div class="help-us-image">
-          <img src="/images/help.png" target="_blank"  alt="Contribuie la CrohnCare" height="400px" width="800px">
+          <img src="/images/help.png" alt="Contribuie la CrohnCare" height="400px" width="800px">
         </div>
       </div>
     </div>
@@ -1506,4 +1682,3 @@
   </script>
 </body>
 </html>
-
