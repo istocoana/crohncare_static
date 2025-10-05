@@ -1147,7 +1147,198 @@
       order: 0;
     }
   }
-</style>
+
+    #despre {
+      background-color: var(--white);
+    }
+
+    .team-container {
+      text-align: center;
+    }
+
+    .team-description {
+      max-width: 800px;
+      margin: 0 auto 50px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--dark);
+    }
+
+    /* Updated team section to match screenshot with left/right layout */
+    .team-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 60px;
+      margin-top: 60px;
+      align-items: start;
+    }
+
+    .team-left-side {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .team-right-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 100px;
+    }
+
+    .team-group {
+      margin: 0;
+    }
+
+    .team-group-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 40px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .team-row {
+      display: flex;
+      justify-content: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .team-member-simple {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      flex: 0 0 auto;
+    }
+
+    .team-member-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: var(--accent);
+      border: 8px solid var(--white);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .team-member-avatar:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-member-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-member-simple .team-member-role {
+      font-size: 1.1rem;
+      color: var(--dark);
+      font-weight: 500;
+      margin: 0;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* Medical advisor styling - larger and green */
+    .medical-advisor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .medical-advisor .team-member-avatar {
+      width: 280px;
+      height: 280px;
+      background-color: var(--secondary);
+      border: 12px solid var(--white);
+    }
+
+    .medical-advisor .team-member-role {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .medical-advisor .team-member-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 400;
+      margin-top: -15px;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1200px) {
+      .team-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .team-right-side {
+        position: static;
+        margin-top: 40px;
+      }
+
+      .team-group-title {
+        text-align: center;
+      }
+
+      .team-row {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .team-row {
+        gap: 30px;
+      }
+
+      .team-member-avatar {
+        width: 140px;
+        height: 140px;
+      }
+
+      .medical-advisor .team-member-avatar {
+        width: 240px;
+        height: 240px;
+      }
+
+      .team-group-title {
+        font-size: 1.6rem;
+      }
+
+      .team-member-role {
+        font-size: 1rem;
+      }
+
+      .medical-advisor .team-member-role {
+        font-size: 1.3rem;
+      }
+
+      .medical-advisor .team-member-subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .team-member-avatar {
+        width: 120px;
+        height: 120px;
+      }
+
+      .medical-advisor .team-member-avatar {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -1358,8 +1549,8 @@
         </p>
       </div>
       <div class="viitor-grid">
-        <!-- Updated future features to match requirements
-        <div class="viitor-card">
+        <!-- Updated future features to match requirements -->
+        <!-- <div class="viitor-card">
           <div class="viitor-icon">
             <i class="bi bi-bell"></i>
           </div>
@@ -1410,53 +1601,63 @@
           <p>Echipa noastră îmbină expertiza în tehnologie, medicină și design pentru a oferi o soluție reală, accesibilă și centrată pe pacient. Coordonăm studiul clinic pilot și validarea aplicației, asigurându-ne că fiecare funcționalitate răspunde nevoilor reale ale pacienților cu boala Crohn și standardelor medicale actuale.</p>
         </div>
         
-         <!-- Restructured team section to match screenshot with grouped roles -->
-         <!-- Doctors Group -->
-        <div class="team-group fade-in">
-          <h3 class="team-group-title">Medical Experts</h3>
-          <div class="team-row">
-            <div class="team-member-simple">
-              <div class="team-member-avatar">
-                <img src="images/team/ana_popescu.jpg" alt="Dr. Ana Popescu">
+         <!-- Restructured team section to match screenshot with left/right layout -->
+         <!-- Left side: 5 team members in 2 rows -->
+        <div class="team-layout fade-in">
+          <div class="team-left-side">
+             <!-- 3 soon-to-be-doctors -->
+            <div class="team-group">
+              <h3 class="team-group-title">3 soon-to-be-doctors</h3>
+              <div class="team-row">
+                <div class="team-member-simple">
+                  <div class="team-member-avatar">
+                    <img src="/images/alexia.png" alt="Business" width="190" height="190">
+                  </div>
+                  <p class="team-member-role">Business</p>
+                </div>
+                <div class="team-member-simple">
+                  <div class="team-member-avatar">
+                    <img src="/images/alex.png" alt="Business" width="180" height="180">
+                  </div>
+                  <p class="team-member-role">Patient Advocate</p>
+                </div>
+                <div class="team-member-simple">
+                  <div class="team-member-avatar">
+                    <img src="/images/roxana.png" alt="Business" width="180" height="180">
+                  </div>
+                  <p class="team-member-role">Medical</p>
+                </div>
               </div>
-              <p class="team-member-role">Dr. Ana Popescu<br>Gastroenterologie</p>
             </div>
-            <div class="team-member-simple">
-              <div class="team-member-avatar">
-                <img src="images/team/maria_stanciu.jpg" alt="Dr. Maria Stanciu">
+
+             <!-- Software Engineers -->
+            <div class="team-group">
+              <h3 class="team-group-title">Software Engineers</h3>
+              <div class="team-row">
+                <div class="team-member-simple">
+                  <div class="team-member-avatar">
+                    <img src="/images/oana.png" alt="Business" width="180" height="180">
+                  </div>
+                  <p class="team-member-role">Design & Backend</p>
+                </div>
+                <div class="team-member-simple">
+                  <div class="team-member-avatar">
+                    <img src="/images/cipri.png" alt="Business" width="180" height="180">
+                  </div>
+                  <p class="team-member-role">Frontend</p>
+                </div>
               </div>
-              <p class="team-member-role">Dr. Maria Stanciu<br>Cercetător Clinic</p>
             </div>
           </div>
-        </div>
 
-         <!-- Software Engineers Group -->
-        <div class="team-group fade-in">
-          <h3 class="team-group-title">Tech Team</h3>
-          <div class="team-row">
-            <div class="team-member-simple">
+           <!-- Right side: 1 larger medical advisor -->
+          <div class="team-right-side">
+            <div class="medical-advisor">
               <div class="team-member-avatar">
-                <img src="images/team/mihai_ionescu.jpg" alt="Mihai Ionescu">
+                <img src="/images/radu.png?height=320&width=320" alt="Medical Advisor">
               </div>
-              <p class="team-member-role">Mihai Ionescu<br>Lead Developer</p>
-            </div>
-            <div class="team-member-simple">
-              <div class="team-member-avatar">
-                <img src="images/team/elena_dumitrescu.jpg" alt="Elena Dumitrescu">
-              </div>
-              <p class="team-member-role">Elena Dumitrescu<br>UX/UI Designer</p>
-            </div>
-            <div class="team-member-simple">
-              <div class="team-member-avatar">
-                <img src="images/team/andrei_popa.jpg" alt="Andrei Popa">
-              </div>
-              <p class="team-member-role">Andrei Popa<br>Data Scientist</p>
-            </div>
-            <div class="team-member-simple">
-              <div class="team-member-avatar">
-                <img src="images/team/cristian_munteanu.jpg" alt="Cristian Munteanu">
-              </div>
-              <p class="team-member-role">Cristian Munteanu<br>Project Manager</p>
+              <p class="team-member-role">Medical Advisor</p>
+              <p class="team-member-subtitle">Medical Clinic<br>No. 2 UMF Cluj</p>
             </div>
           </div>
         </div>
