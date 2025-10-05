@@ -578,63 +578,125 @@
       color: var(--dark);
     }
 
-    .team-members {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+    /* Updated team section styles to match screenshot with circular avatars and grouped layout */
+    .team-group {
+      margin-top: 60px;
+      margin-bottom: 50px;
     }
 
-    .team-member {
+    .team-group-title {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .team-row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .team-member-simple {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+      min-width: 150px;
       background: var(--white);
       border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
     }
 
-    .team-member:hover {
+    .team-member-simple:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .team-member img {
+    .team-member-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: var(--accent);
+      border: 8px solid var(--white);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .team-member-avatar:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-member-avatar img {
       width: 100%;
-      height: 250px;
+      height: 100%;
       object-fit: cover;
     }
 
-    .team-member-info {
-      padding: 20px;
-    }
-
-    .team-member-info h3 {
+    .team-member-simple .team-member-role {
       font-size: 1.3rem;
-      margin-bottom: 5px;
-      color: var(--primary);
-    }
-
-    .team-member-info p {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 15px;
-    }
-
-    .team-member-social {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .team-member-social a {
       color: var(--dark);
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
+      font-weight: 600;
+      margin: 0;
     }
 
-    .team-member-social a:hover {
-      color: var(--primary);
-      transform: translateY(-3px);
+    /* Remove old team styles */
+    .team-members,
+    .team-left,
+    .team-right,
+    .team-member,
+    .team-member-info,
+    .team-member-social {
+      display: none;
+    }
+
+    @media (max-width: 992px) {
+      .team-members {
+        grid-template-columns: 1fr;
+      }
+
+      .team-left {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .team-right {
+        justify-content: center;
+      }
+
+      .team-right .team-member {
+        max-width: 400px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .team-row {
+        gap: 40px;
+      }
+
+      .team-member-avatar {
+        width: 150px;
+        height: 150px;
+      }
+
+      .team-group-title {
+        font-size: 1.6rem;
+      }
+
+      .team-member-role {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .team-left {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Contact Section */
@@ -1291,12 +1353,19 @@
       <div class="section-header">
         <h2>Ce urmează</h2>
         <!-- Updated subtitle to match requirements -->
-        <!-- <p class="text-balance">
+        <p class="text-balance">
           Funcționalități viitoare pentru o experiență mai bună
-        </p> -->
+        </p>
       </div>
       <div class="viitor-grid">
-        <!-- Updated future features to match requirements -->
+        <!-- Updated future features to match requirements
+        <div class="viitor-card">
+          <div class="viitor-icon">
+            <i class="bi bi-bell"></i>
+          </div>
+          <h3>Notificări inteligente personalizate</h3>
+          <p>Sistem avansat de notificări adaptate nevoilor individuale, cu alerte pentru medicație, programări și monitorizare simptome.</p>
+        </div> -->
         <div class="viitor-card">
           <div class="viitor-icon">
             <i class="bi bi-phone"></i>
@@ -1317,13 +1386,6 @@
           </div>
           <h3>Lansare oficială aplicație</h3>
           <p>Lansarea completă a platformei CrohnCare cu toate funcționalitățile validate clinic și optimizate pentru utilizatori.</p>
-        </div>
-            <div class="viitor-card">
-          <div class="viitor-icon">
-            <i class="bi bi-bell"></i>
-          </div>
-          <h3>Notificări inteligente personalizate</h3>
-          <p>Sistem avansat de notificări adaptate nevoilor individuale, cu alerte pentru medicație, programări și monitorizare simptome.</p>
         </div>
       </div>
       <!-- Added mention about clinical study guiding development -->
@@ -1347,72 +1409,54 @@
           <!-- Updated team description to be more professional and mention clinical study -->
           <p>Echipa noastră îmbină expertiza în tehnologie, medicină și design pentru a oferi o soluție reală, accesibilă și centrată pe pacient. Coordonăm studiul clinic pilot și validarea aplicației, asigurându-ne că fiecare funcționalitate răspunde nevoilor reale ale pacienților cu boala Crohn și standardelor medicale actuale.</p>
         </div>
-        <!-- Added 6 team members with photos, names, roles, and social links -->
-        <div class="team-members fade-in">
-          <div class="team-member">
-            <img src="/images/team/ana_popescu.jpg" alt="Dr. Ana Popescu">
-            <div class="team-member-info">
-              <h3>Dr. Ana Popescu</h3>
-              <p>Consultant Gastroenterologie</p>
-              <div class="team-member-social">
-                <a href="https://www.linkedin.com/in/ana-popescu-example"><i class="bi bi-linkedin"></i></a>
-                <a href="mailto:ana.popescu@crohncare.com"><i class="bi bi-envelope"></i></a>
+        
+         <!-- Restructured team section to match screenshot with grouped roles -->
+         <!-- Doctors Group -->
+        <div class="team-group fade-in">
+          <h3 class="team-group-title">Medical Experts</h3>
+          <div class="team-row">
+            <div class="team-member-simple">
+              <div class="team-member-avatar">
+                <img src="images/team/ana_popescu.jpg" alt="Dr. Ana Popescu">
               </div>
+              <p class="team-member-role">Dr. Ana Popescu<br>Gastroenterologie</p>
+            </div>
+            <div class="team-member-simple">
+              <div class="team-member-avatar">
+                <img src="images/team/maria_stanciu.jpg" alt="Dr. Maria Stanciu">
+              </div>
+              <p class="team-member-role">Dr. Maria Stanciu<br>Cercetător Clinic</p>
             </div>
           </div>
-          <div class="team-member">
-            <img src="/images/team/mihai_ionescu.jpg" alt="Mihai Ionescu">
-            <div class="team-member-info">
-              <h3>Mihai Ionescu</h3>
-              <p>Lead Developer</p>
-              <div class="team-member-social">
-                <a href="https://www.linkedin.com/in/mihai-ionescu-example"><i class="bi bi-linkedin"></i></a>
-                <a href="https://github.com/mihaiionescu"><i class="bi bi-github"></i></a>
+        </div>
+
+         <!-- Software Engineers Group -->
+        <div class="team-group fade-in">
+          <h3 class="team-group-title">Tech Team</h3>
+          <div class="team-row">
+            <div class="team-member-simple">
+              <div class="team-member-avatar">
+                <img src="images/team/mihai_ionescu.jpg" alt="Mihai Ionescu">
               </div>
+              <p class="team-member-role">Mihai Ionescu<br>Lead Developer</p>
             </div>
-          </div>
-          <div class="team-member">
-            <img src="/images/team/elena_dumitrescu.jpg" alt="Elena Dumitrescu">
-            <div class="team-member-info">
-              <h3>Elena Dumitrescu</h3>
-              <p>UX/UI Designer</p>
-              <div class="team-member-social">
-                <a href="https://www.linkedin.com/in/elena-dumitrescu-example"><i class="bi bi-linkedin"></i></a>
-                <a href="https://www.behance.net/elenadumitrescu"><i class="bi bi-behance"></i></a>
+            <div class="team-member-simple">
+              <div class="team-member-avatar">
+                <img src="images/team/elena_dumitrescu.jpg" alt="Elena Dumitrescu">
               </div>
+              <p class="team-member-role">Elena Dumitrescu<br>UX/UI Designer</p>
             </div>
-          </div>
-          <div class="team-member">
-            <img src="/images/team/andrei_popa.jpg" alt="Andrei Popa">
-            <div class="team-member-info">
-              <h3>Andrei Popa</h3>
-              <p>Data Scientist</p>
-              <div class="team-member-social">
-                <a href="https://www.linkedin.com/in/andrei-popa-example"><i class="bi bi-linkedin"></i></a>
-                <a href="https://github.com/andreipopa"><i class="bi bi-github"></i></a>
+            <div class="team-member-simple">
+              <div class="team-member-avatar">
+                <img src="images/team/andrei_popa.jpg" alt="Andrei Popa">
               </div>
+              <p class="team-member-role">Andrei Popa<br>Data Scientist</p>
             </div>
-          </div>
-          <div class="team-member">
-            <img src="/images/team/maria_stanciu.jpg" alt="Dr. Maria Stanciu">
-            <div class="team-member-info">
-              <h3>Dr. Maria Stanciu</h3>
-              <p>Cercetător Clinic</p>
-              <div class="team-member-social">
-                <a href="https://www.linkedin.com/in/maria-stanciu-example"><i class="bi bi-linkedin"></i></a>
-                <a href="mailto:maria.stanciu@crohncare.com"><i class="bi bi-envelope"></i></a>
+            <div class="team-member-simple">
+              <div class="team-member-avatar">
+                <img src="images/team/cristian_munteanu.jpg" alt="Cristian Munteanu">
               </div>
-            </div>
-          </div>
-          <div class="team-member">
-            <img src="/images/team/cristian_munteanu.jpg" alt="Cristian Munteanu">
-            <div class="team-member-info">
-              <h3>Cristian Munteanu</h3>
-              <p>Project Manager</p>
-              <div class="team-member-social">
-                <a href="https://www.linkedin.com/in/cristian-munteanu-example"><i class="bi bi-linkedin"></i></a>
-                <a href="mailto:cristian.munteanu@crohncare.com"><i class="bi bi-envelope"></i></a>
-              </div>
+              <p class="team-member-role">Cristian Munteanu<br>Project Manager</p>
             </div>
           </div>
         </div>
